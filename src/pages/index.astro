@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Smokeless Heat | High-Efficiency Wood Gasification Boilers">
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="relative h-screen min-h-[700px] flex items-end overflow-hidden bg-charcoal">
+      <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/60 to-transparent"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 pb-24 w-full">
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Clean · Efficient · Self-Reliant</p>
+        <h1 class="font-serif text-5xl md:text-7xl text-cream leading-tight max-w-4xl">Heat Like Modern Man,<br>Not Caveman</h1>
+        <p class="mt-6 text-cream/80 text-lg max-w-xl">Wood gasification boilers + thermal storage tanks deliver clean, high-efficiency heat with less wood and greater convenience.</p>
+        <div class="mt-10 flex gap-4">
+          <a href="/boilers" class="bg-ember text-cream px-8 py-4 text-sm uppercase tracking-widest font-medium hover:bg-wood transition">Explore Boilers</a>
+          <a href="/how-it-works" class="border border-cream/40 text-cream px-8 py-4 text-sm uppercase tracking-widest hover:bg-cream/10 transition">How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="py-24 bg-cream">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="text-wood text-sm uppercase tracking-[0.3em] mb-6">North American Importer of Varmebaronen Vedolux</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-darkwood leading-tight">The most efficient way to burn wood for heat.</h2>
+        <p class="mt-8 text-lg text-charcoal/70 leading-relaxed">With electric and fossil fuel prices fluctuating, switch to wood or pellets for primary heat. Save money, gain peace of mind, and become more self-reliant while doing the environment a favor. Pair a low-mass downdraft Vedolux boiler with insulated thermal storage for constant comfort—even after the fire is out.</p>
+      </div>
+    </section>
+
+    <!-- Benefits Grid -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="font-serif text-2xl text-darkwood mb-3">Clean Burn</h3>
+            <p class="text-charcoal/70">Gasification technology produces a virtually smokeless operation. Most Vedolux models reach smoke-free burn within minutes of lighting.</p>
+          </div>
+          <div>
+            <h3 class="font-serif text-2xl text-darkwood mb-3">Thermal Storage</h3>
+            <p class="text-charcoal/70">Burn at full capacity and store excess heat in insulated tanks. Heat your home comfortably long after the fire has gone out. Less wood, more convenience.</p>
+          </div>
+          <div>
+            <h3 class="font-serif text-2xl text-darkwood mb-3">Easy Maintenance</h3>
+            <p class="text-charcoal/70">Unique curved tube exchanger design allows easy cleaning from the front. High-wear parts are consumable and owner-replaceable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 bg-darkwood text-cream">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="font-serif text-4xl md:text-5xl mb-6">Join the path to cleaner wood burning</h2>
+        <p class="text-cream/70 text-lg mb-10">Ready to upgrade your heating system? Contact us for dealer info, product details, or a consultation.</p>
+        <a href="/contact" class="inline-block bg-ember text-cream px-10 py-4 text-sm uppercase tracking-widest font-medium hover:bg-wood transition">Contact Us</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
