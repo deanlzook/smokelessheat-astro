@@ -9,85 +9,79 @@ import Footer from '../../components/Footer.astro';
 
   <main class="pt-24">
     <section class="py-16 bg-charcoal text-cream">
-      <div class="max-w-3xl mx-auto px-6">
+      <div class="max-w-4xl mx-auto px-6">
         <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Installation</p>
         <h1 class="font-serif text-4xl md:text-5xl">Variable Speed Circulators</h1>
       </div>
     </section>
 
     <article class="py-16 bg-cream">
-      <div class="max-w-3xl mx-auto px-6">
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          The purpose of using the nimbus control is so the ideal flow rate can be achievable for any circulator in your system. Flow rate is important. A boiler circulator running too slowly can overheat, whereas running too quickly can negatively affect stratification in thermal storage tanks by stirring the hot and cold water.
-        </p>
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          Using the manual dip switch settings on the nimbus, you can test different speeds in order to determine the best flow rate for transferring heat.
-        </p>
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          The default settings are with all switches in the off position as seen here.
-        </p>
+      <div class="max-w-4xl mx-auto px-6 space-y-8 text-charcoal/90 leading-relaxed">
 
-        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/DefaultSettings.jpg" alt="Default dip switch settings" class="w-full max-w-md mx-auto my-8 border border-wood/20" />
-
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          Using the dip switches, you can manually set the controller to a fixed speed. You are able to configure it in one percent increments between 27 and 100 percent output. Please note, we have found most circulators to be unable to work below 40 percent as set on the nimbus control.
-        </p>
-
-        <div class="flex flex-wrap justify-center gap-6 my-8">
-          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/FixedSpeed27-250x183.jpg" alt="Fixed speed 27%" class="max-w-xs border border-wood/20" />
-          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/FixedSpeed50-250x182.jpg" alt="Fixed speed 50%" class="max-w-xs border border-wood/20" />
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+          <div>
+            <p>The purpose of using the nimbus control is so the ideal flow rate can be achievable for any circulator in your system. Flow rate is important. A boiler circulator running too slowly can overheat, whereas running too quickly can negatively affect stratification in thermal storage tanks by stirring the hot and cold water.</p>
+            <p class="mt-4">Using the manual dip switch settings on the nimbus, you can test different speeds in order to determine the best flow rate for transferring heat.</p>
+            <p class="mt-4 italic">The default settings are with all switches in the off position as seen here.</p>
+            <img src="https://smokelessheat.com/wp-content/uploads/2010/01/DefaultSettings.jpg" alt="Default dip switch settings" class="mt-4 border border-wood/20" />
+            <p class="text-sm text-center mt-1">Default dip switch settings</p>
+          </div>
+          <div>
+            <img src="https://smokelessheat.com/wp-content/uploads/2015/03/FixedSpeedSettings.jpg" alt="Table 7: Fixed Speed Settings" class="border border-wood/20" />
+          </div>
         </div>
 
-        <img src="https://smokelessheat.com/wp-content/uploads/2015/03/FixedSpeedSettings.jpg" alt="Fixed speed settings chart" class="w-full max-w-sm mx-auto my-8 border border-wood/20" />
+        <p>Using the dip switches, you can manually set the controller to a fixed speed. You are able to configure it in one percent increments between 27 and 100 percent output. Please note, we have found most circulators to be unable to work below 40 percent as set on the nimbus control.</p>
 
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-10">
-          Using the Nimbus controller in this manner will give you a single user defined speed for most any circulator. Our personal experience is with using the TACO circulators, 007, 0010, 0014 models.
-        </p>
-
-        <h2 class="font-serif text-3xl text-darkwood mb-6">Using Nimbus for True Variable Speed with NFCS</h2>
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          Another way to use the nimbus is with a nofossil control system – (now called VESTA), NFCS. The analog out (AO), on the left hand column are the four outputs being controlled with 4-20ma control signal.
-        </p>
-
-        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/LiveShot.jpg" alt="Live shot of Nimbus setup" class="w-full max-w-2xl mx-auto my-8 border border-wood/20" />
-
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          The benefit of using the Nimbus with the NFCS is to drive your circulator speeds dynamically based on current heating system temperatures and rule sets. This allows you to have even greater control over your heating system and also run your system at its optimum settings.
-        </p>
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          In this setup, the output of the Nimbus control is being controlled by the NFCS via a 4-20ma signal. The NFCS connects directly to each specific nimbus controller with a signal wire coming through a variable speed breakout box.
-        </p>
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          One of the first things you need to do when setting up your variable speed controller to work with NFCS is to configure the jumper so it will work with 4-20ma signal.
-        </p>
-
-        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/JumperSettings.jpg" alt="Jumper settings for 4-20ma" class="w-full max-w-md mx-auto my-8 border border-wood/20" />
-
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          Using the manual we can determine how to best set the Nimbus for our system. This is an example of a configuration, set to run on current control. This example is also to run at 60 percent if no signal is present. Where the manual refers to a “fan”, this applies to the circulator in our scenario.
-        </p>
-
-        <div class="flex flex-wrap justify-center gap-4 my-8">
-          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/table3.jpg" alt="Table 3" class="max-w-xs border border-wood/20" />
-          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/table2.jpg" alt="Table 2" class="max-w-xs border border-wood/20" />
-          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/dipswitch.jpg" alt="Dip switch" class="max-w-xs border border-wood/20" />
+        <div class="flex flex-wrap gap-6 justify-center">
+          <div class="text-center">
+            <img src="https://smokelessheat.com/wp-content/uploads/2010/01/FixedSpeed27-250x183.jpg" alt="Position for fixed speed control (27%)" class="border border-wood/20" />
+            <p class="text-sm mt-1">Position for fixed speed control (27%)</p>
+          </div>
+          <div class="text-center">
+            <img src="https://smokelessheat.com/wp-content/uploads/2010/01/FixedSpeed50-250x182.jpg" alt="Example of fixed speed at 50%" class="border border-wood/20" />
+            <p class="text-sm mt-1">Example of fixed speed at 50%</p>
+          </div>
         </div>
 
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          A. Fan On / Fan Off Feature (switch #1): To turn fan(s) off below the set idle speed (see table 3). Set switch #1 to the ON position. To keep fans running at idle speed below the set idle speed, set switch #1 to the OFF position.
-        </p>
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          C. Control Signal Loss Options (switch #6): If the control signal is lost, (less than 4mA in I mode, less than 2VDC in V mode) when switch 6 is OFF fans will continue to idle or remain off. To send fans to full speed if the control signal is lost, set switch 6 to the ON position.
-        </p>
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          In the event that the NFCS is offline and not supplying 4-20ma signals, the nimbus can be configured so that it can either run in one of four preselected idle speeds or simply run wide open assuming that the aquastat or other control switch is supplying line voltage to the nimbus.
-        </p>
+        <p>Using the Nimbus controller in this manner will give you a single user defined speed for most any circulator. Our personal experience is with using the TACO circulators, 007, 0010, 0014 models.</p>
 
-        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/FallBackNimbus.jpg" alt="Fallback Nimbus settings" class="w-full max-w-2xl mx-auto my-8 border border-wood/20" />
+        <h2 class="font-serif text-3xl text-darkwood mt-12">Using Nimbus for True Variable Speed with NFCS</h2>
 
-        <p class="text-lg text-charcoal/80 leading-relaxed">
-          Connecting a variable speed control unit to the NFCS
-        </p>
+        <p>Another way to use the nimbus is with a nofossil control system – (now called VESTA), NFCS. The analog out (AO), on the left hand column are the four outputs being controlled with 4-20ma control signal.</p>
+
+        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/LiveShot.jpg" alt="NoFossil Control System Web Interface" class="mx-auto border border-wood/20" />
+
+        <p>The benefit of using the Nimbus with the NFCS is to drive your circulator speeds dynamically based on current heating system temperatures and rule sets. This allows you to have even greater control over your heating system and also run your system at its optimum settings.</p>
+
+        <p>In this setup, the output of the Nimbus control is being controlled by the NFCS via a 4-20ma signal. The NFCS connects directly to each specific nimbus controller with a signal wire coming through a variable speed breakout box.</p>
+
+        <p>One of the first things you need to do when setting up your variable speed controller to work with NFCS is to configure the jumper so it will work with 4-20ma signal.</p>
+
+        <div class="text-center">
+          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/JumperSettings.jpg" alt="Jumper is shown in correct position for 4-20ma as used with NFCS" class="mx-auto border border-wood/20" />
+          <p class="text-sm mt-2">Jumper is shown in correct position for 4-20ma as used with NFCS.</p>
+        </div>
+
+        <p>Using the manual we can determine how to best set the Nimbus for our system. This is an example of a configuration, set to run on current control. This example is also to run at 60 percent if no signal is present. Where the manual refers to a “fan”, this applies to the circulator in our scenario.</p>
+
+        <p><strong>A. Fan On / Fan Off Feature (switch #1):</strong> To turn fan(s) off below the set idle speed (see table 3). Set switch #1 to the ON position. To keep fans running at idle speed below the set idle speed, set switch #1 to the OFF position.</p>
+
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/table3.jpg" alt="Table 3: Idle Speed DIP Switch Settings" class="border border-wood/20" />
+          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/dipswitch.jpg" alt="Dip switch diagram" class="border border-wood/20" />
+        </div>
+
+        <p><strong>C. Control Signal Loss Options (switch #6):</strong> If the control signal is lost, (less than 4mA in I mode, less than 2VDC in V mode) when switch 6 is OFF fans will continue to idle or remain off. To send fans to full speed if the control signal is lost, set switch 6 to the ON position.</p>
+
+        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/table2.jpg" alt="Table 2: Setting Control Modes" class="mx-auto border border-wood/20" />
+
+        <p>In the event that the NFCS is offline and not supplying 4-20ma signals, the nimbus can be configured so that it can either run in one of four preselected idle speeds or simply run wide open assuming that the aquastat or other control switch is supplying line voltage to the nimbus.</p>
+
+        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/FallBackNimbus.jpg" alt="Fallback Nimbus wiring diagram" class="mx-auto border border-wood/20" />
+
+        <p class="mt-8">Connecting a variable speed control unit to the NFCS</p>
+
       </div>
     </article>
   </main>
