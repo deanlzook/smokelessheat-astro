@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contact | Smokeless Heat" description="Contact Smokeless Heat for Vedolux wood gasification boilers, thermal storage, and dealer information. Call, email, or send a message.">
+  <Header />
+
+  <main class="pt-24">
+    <!-- Hero -->
+    <section class="py-20 bg-charcoal text-cream">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Get in Touch</p>
+        <h1 class="font-serif text-5xl md:text-6xl">Contact Smokeless Heat</h1>
+        <p class="mt-6 text-cream/70 text-lg max-w-2xl mx-auto">Questions about Vedolux boilers, thermal storage, pricing, or becoming a dealer? We’re here to help.</p>
+      </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="py-20 bg-cream">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <!-- Info -->
+          <div>
+            <h2 class="font-serif text-3xl text-darkwood mb-8">Reach Us Directly</h2>
+            
+            <div class="space-y-8">
+              <div>
+                <p class="text-sm uppercase tracking-widest text-wood mb-2">Address</p>
+                <p class="text-lg text-charcoal">
+                  Smokeless Heat, LLC<br>
+                  2020 Cornwall Road<br>
+                  Lebanon, PA 17042
+                </p>
+              </div>
+
+              <div>
+                <p class="text-sm uppercase tracking-widest text-wood mb-2">Phone</p>
+                <a href="tel:7173890083" class="text-lg text-charcoal hover:text-ember transition">(717) 389-0083</a>
+              </div>
+
+              <div>
+                <p class="text-sm uppercase tracking-widest text-wood mb-2">Fax</p>
+                <p class="text-lg text-charcoal">(717) 273-2248</p>
+              </div>
+
+              <div>
+                <p class="text-sm uppercase tracking-widest text-wood mb-2">Email</p>
+                <a href="mailto:info@smokelessheat.com" class="text-lg text-charcoal hover:text-ember transition">info@smokelessheat.com</a>
+              </div>
+            </div>
+
+            <div class="mt-12 p-6 bg-white border border-wood/20">
+              <p class="text-charcoal/70 leading-relaxed">Contact Smokeless Heat is easy. Call us at <a href="tel:7173890083" class="text-ember hover:underline">(717) 389-0083</a> or email <a href="mailto:info@smokelessheat.com" class="text-ember hover:underline">info@smokelessheat.com</a>. You can also request quotes or product information using the form.</p>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div>
+            <h2 class="font-serif text-3xl text-darkwood mb-8">Request Information</h2>
+            <form class="space-y-6" action="#" method="post">
+              <div>
+                <label for="name" class="block text-sm uppercase tracking-widest text-wood mb-2">Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-white border border-wood/30 focus:border-ember focus:outline-none text-charcoal">
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm uppercase tracking-widest text-wood mb-2">Email</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-white border border-wood/30 focus:border-ember focus:outline-none text-charcoal">
+              </div>
+
+              <div>
+                <label for="phone" class="block text-sm uppercase tracking-widest text-wood mb-2">Phone</label>
+                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-white border border-wood/30 focus:border-ember focus:outline-none text-charcoal">
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm uppercase tracking-widest text-wood mb-2">Message</label>
+                <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 bg-white border border-wood/30 focus:border-ember focus:outline-none text-charcoal resize-y"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-darkwood text-cream px-8 py-4 text-sm uppercase tracking-widest font-medium hover:bg-ember transition">
+                Send Message
+              </button>
+            </form>
+            <p class="mt-4 text-sm text-charcoal/50">This form is for demonstration. Connect it to an email service or form backend when ready.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
