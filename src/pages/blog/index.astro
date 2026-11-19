@@ -9,42 +9,49 @@ const posts = [
     title: 'EPA NSPS and Vedolux Wood Boilers',
     date: 'News',
     excerpt: 'Please take a look at our newer posting for an update on where we stand regarding the EPA testing. All the current for sale boilers are EPA certified models.',
+    thumbnail: 'https://smokelessheat.com/wp-content/uploads/2016/02/epalogo.png',
   },
   {
     slug: 'lighting-a-vedolux37',
     title: 'Lighting a Vedolux 37',
     date: 'Operation',
     excerpt: 'This YouTube video shows a Vedolux 37 owner lighting the boiler and demonstrates a fast startup method.',
+    thumbnail: 'https://smokelessheat.com/wp-content/uploads/2015/03/vedolux37startup.png',
   },
   {
     slug: 'ag-progress-show-2013',
     title: 'Ag Progress Show 2013',
     date: 'Events',
     excerpt: 'This Ag Progress show 2013 was very well attended. We were displaying the Vedolux boilers in our new operational trailer.',
+    thumbnail: 'https://smokelessheat.com/wp-content/uploads/2015/03/photo-2-3-400x400.jpg',
   },
   {
     slug: 'install-in-studio-barn',
     title: 'Install in Studio Barn',
     date: 'Installation',
     excerpt: 'Installation of a Vedolux system in a studio barn.',
+    thumbnail: 'https://smokelessheat.com/wp-content/uploads/2015/03/NH_studiobarn.png',
   },
   {
     slug: 'vedolux-50-with-storage-tanks',
     title: 'Vedolux 50 with Storage Tanks',
     date: 'Installation',
     excerpt: 'How the Vedolux 50 wood gasification boiler pairs with thermal storage tanks for efficient batch burning and convenient heating.',
+    thumbnail: 'https://smokelessheat.com/wp-content/uploads/2015/03/NH_Vedolux_tanks1.png',
   },
   {
     slug: 'variable-speed-circulators',
     title: 'Variable Speed Circulators',
     date: 'Blog',
     excerpt: 'How variable speed circulators improve efficiency, comfort, and stratification in wood boiler and thermal storage systems.',
+    thumbnail: 'https://smokelessheat.com/wp-content/uploads/2010/01/DefaultSettings.jpg',
   },
   {
     slug: 'what-is-wood-gasification',
     title: 'What is Wood Gasification',
     date: 'January 17, 2009',
     excerpt: 'Wood gasification is a way of burning wood so cleanly that the chimney produces almost no smoke. Learn how Vedolux boilers use this process.',
+    thumbnail: 'https://smokelessheat.com/wp-content/uploads/2015/03/vedolux37startup.png',
   },
 ];
 ---
@@ -64,13 +71,20 @@ const posts = [
       <div class="max-w-4xl mx-auto px-6">
         <div class="space-y-12">
           {posts.map(post => (
-            <article class="border-b border-wood/20 pb-12">
-              <p class="text-sm uppercase tracking-widest text-wood mb-2">{post.date}</p>
-              <h2 class="font-serif text-3xl text-darkwood mb-4">
-                <a href={`/blog/${post.slug}`} class="hover:text-ember transition">{post.title}</a>
-              </h2>
-              <p class="text-charcoal/80 leading-relaxed mb-6">{post.excerpt}</p>
-              <a href={`/blog/${post.slug}`} class="text-ember text-sm uppercase tracking-widest font-medium hover:underline">Read More</a>
+            <article class="border-b border-wood/20 pb-12 flex flex-col md:flex-row gap-6">
+              {post.thumbnail && (
+                <div class="md:w-48 flex-shrink-0">
+                  <img src={post.thumbnail} alt={post.title} class="w-full h-32 object-cover border border-wood/20" />
+                </div>
+              )}
+              <div class="flex-1">
+                <p class="text-sm uppercase tracking-widest text-wood mb-2">{post.date}</p>
+                <h2 class="font-serif text-3xl text-darkwood mb-4">
+                  <a href={`/blog/${post.slug}`} class="hover:text-ember transition">{post.title}</a>
+                </h2>
+                <p class="text-charcoal/80 leading-relaxed mb-6">{post.excerpt}</p>
+                <a href={`/blog/${post.slug}`} class="text-ember text-sm uppercase tracking-widest font-medium hover:underline">Read More</a>
+              </div>
             </article>
           ))}
         </div>
