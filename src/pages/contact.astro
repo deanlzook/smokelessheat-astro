@@ -49,6 +49,14 @@ import Footer from '../components/Footer.astro';
                 <p class="text-sm uppercase tracking-widest text-wood mb-2">Email</p>
                 <a href="mailto:info@smokelessheat.com" class="text-lg text-charcoal hover:text-ember transition">info@smokelessheat.com</a>
               </div>
+
+              <div>
+                <p class="text-sm uppercase tracking-widest text-wood mb-2">Hours</p>
+                <p class="text-lg text-charcoal">
+                  Monday – Friday: 9:00 AM – 5:00 PM<br>
+                  Saturday – Sunday: Closed
+                </p>
+              </div>
             </div>
 
             <div class="mt-12 p-6 bg-white border border-wood/20">
@@ -59,7 +67,19 @@ import Footer from '../components/Footer.astro';
           <!-- Form -->
           <div>
             <h2 class="font-serif text-3xl text-darkwood mb-8">Request Information</h2>
-            <form class="space-y-6" action="#" method="post">
+            <form
+              class="space-y-6"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              id="contact-form"
+            >
+              <!-- Replace with your Web3Forms access key -->
+              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+              <!-- Honeypot spam protection -->
+              <input type="checkbox" name="botcheck" style="display: none;" />
+              <!-- Optional: custom subject -->
+              <input type="hidden" name="subject" value="New Contact Request from Smokeless Heat Website" />
+
               <div>
                 <label for="name" class="block text-sm uppercase tracking-widest text-wood mb-2">Name</label>
                 <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-white border border-wood/30 focus:border-ember focus:outline-none text-charcoal">
@@ -84,7 +104,24 @@ import Footer from '../components/Footer.astro';
                 Send Message
               </button>
             </form>
-            <p class="mt-4 text-sm text-charcoal/50">This form is for demonstration. Connect it to an email service or form backend when ready.</p>
+            <p class="mt-4 text-sm text-charcoal/50">Form powered by Web3Forms. Replace YOUR_ACCESS_KEY_HERE with your key from web3forms.com.</p>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="mt-20">
+          <h2 class="font-serif text-3xl text-darkwood mb-6 text-center">Find Us</h2>
+          <div class="aspect-video w-full max-w-5xl mx-auto overflow-hidden border border-wood/20">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.5!2d-76.4168!3d40.3078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c5c0e5c5c5c5c5%3A0x0!2s2020%20Cornwall%20Rd%2C%20Lebanon%2C%20PA%2017042!5e0!3m2!1sen!2sus!4v1732000000000!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Smokeless Heat location map"
+            ></iframe>
           </div>
         </div>
       </div>
