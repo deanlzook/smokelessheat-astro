@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const posts = [
+  {
+    slug: 'what-is-wood-gasification',
+    title: 'What is Wood Gasification',
+    date: 'January 17, 2009',
+    excerpt: 'Wood gas, also called “holzgas”, air gas or blue gas, is the product of thermally gasifying a biomass material. Learn how our Vedolux boilers use this process for clean, efficient heat.',
+  },
+];
+---
+
+<Layout title="Blog | Smokeless Heat" description="Articles and guides about wood gasification boilers, Vedolux, thermal storage, and clean wood heating.">
+  <Header />
+
+  <main class="pt-24">
+    <section class="py-20 bg-charcoal text-cream">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Insights</p>
+        <h1 class="font-serif text-5xl md:text-6xl">Blog</h1>
+      </div>
+    </section>
+
+    <section class="py-20 bg-cream">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="space-y-12">
+          {posts.map(post => (
+            <article class="border-b border-wood/20 pb-12">
+              <p class="text-sm uppercase tracking-widest text-wood mb-2">{post.date}</p>
+              <h2 class="font-serif text-3xl text-darkwood mb-4">
+                <a href={`/blog/${post.slug}`} class="hover:text-ember transition">{post.title}</a>
+              </h2>
+              <p class="text-charcoal/80 leading-relaxed mb-6">{post.excerpt}</p>
+              <a href={`/blog/${post.slug}`} class="text-ember text-sm uppercase tracking-widest font-medium hover:underline">Read More</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
