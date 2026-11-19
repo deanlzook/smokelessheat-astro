@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Lighting a Vedolux 37 | Smokeless Heat Blog" description="This YouTube video shows a Vedolux 37 owner lighting the boiler and shows the first 8 minutes or so of the fire.">
+  <Header />
+
+  <main class="pt-24">
+    <section class="py-16 bg-charcoal text-cream">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Operation</p>
+        <h1 class="font-serif text-4xl md:text-5xl">Lighting a Vedolux 37</h1>
+      </div>
+    </section>
+
+    <article class="py-16 bg-cream">
+      <div class="max-w-3xl mx-auto px-6 space-y-6 text-charcoal/90 leading-relaxed">
+        <p>
+          This YouTube video shows a Vedolux 37 owner lighting the boiler and shows the first 8 minutes or so of the fire. It demonstrates how easy these boilers are to light and how quickly the boiler comes up to temp. The Vedolux 30, 37 and 55 all can be lighted with this method. By keeping the bypass closed you have a very fast startup sequence. The method in the boiler manual uses a starting sequence with the bypass open which works too but this video demonstrates my own preferred method of startup. Normally the Vedolux natural draft boiler will need to be started with the bypass open for 5 minutes or so to develop draft velocity before the damper is lowered and the boiler begins to burn “upside-down” in its gasification mode.
+        </p>
+
+        <div class="mt-12">
+          <h2 class="font-serif text-2xl text-darkwood mb-4">Video</h2>
+          <div class="aspect-video w-full">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/LMwSp06HVBE" 
+              title="Lighting a Vedolux 37" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              class="rounded border border-wood/20"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
