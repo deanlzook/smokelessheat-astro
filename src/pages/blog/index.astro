@@ -73,8 +73,8 @@ const posts = [
           {posts.map(post => (
             <article class="border-b border-wood/20 pb-12 flex flex-col md:flex-row gap-6">
               {post.thumbnail && (
-                <div class="md:w-48 flex-shrink-0">
-                  <img src={post.thumbnail} alt={post.title} class="w-full h-32 object-cover border border-wood/20" />
+                <div class="md:w-40 flex-shrink-0">
+                  <img src={post.thumbnail} alt={post.title} class="w-full aspect-square object-contain bg-white border border-wood/20" />
                 </div>
               )}
               <div class="flex-1">
