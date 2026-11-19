@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Variable Speed Circulators | Smokeless Heat Blog" description="How variable speed circulators improve efficiency and comfort in wood boiler and thermal storage systems.">
+  <Header />
+
+  <main class="pt-24">
+    <section class="py-16 bg-charcoal text-cream">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Blog</p>
+        <h1 class="font-serif text-4xl md:text-5xl">Variable Speed Circulators</h1>
+      </div>
+    </section>
+
+    <article class="py-16 bg-cream">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          A traditional circulator runs at one speed. When a zone calls for heat it turns on full blast, and when the call ends it stops. That works, but it is not the most efficient or quiet way to move heat—especially in a system with a wood gasification boiler and thermal storage tanks.
+        </p>
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-10">
+          Variable speed circulators (also called ECM circulators) adjust their speed based on the actual demand of the system. Instead of always pushing the same flow, they slow down when less heat is needed and speed up only when necessary.
+        </p>
+
+        <h2 class="font-serif text-3xl text-darkwood mb-6">Why they help with wood boilers and storage</h2>
+        <ul class="list-disc pl-6 text-charcoal/80 mb-10 space-y-3 text-lg">
+          <li>They maintain better temperature stratification in the accumulator tanks by avoiding excessive mixing.</li>
+          <li>They reduce electrical use. An ECM variable speed pump can use 50–80% less electricity than a standard fixed-speed circulator over a heating season.</li>
+          <li>They deliver more even heat. Flow matches the load, so rooms stay more comfortable without large temperature swings.</li>
+          <li>They are quieter. Lower speeds mean less noise in the pipes and at the pump.</li>
+        </ul>
+
+        <h2 class="font-serif text-3xl text-darkwood mb-6">Common control methods</h2>
+        <ul class="list-disc pl-6 text-charcoal/80 mb-10 space-y-3 text-lg">
+          <li><strong>Delta-T control</strong> — The pump speeds up or slows down to hold a set temperature difference between supply and return (for example 20°F). This matches heat delivery to what the house is actually using.</li>
+          <li><strong>Proportional pressure</strong> — The pump follows a pressure curve that rises as flow increases, useful with zone valves.</li>
+          <li><strong>Constant pressure</strong> — The pump holds a fixed pressure differential and varies speed as zones open and close.</li>
+        </ul>
+
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          In a Vedolux system with storage tanks, a well-chosen variable speed circulator on the house side helps keep the tanks stratified and delivers heat more efficiently. On the boiler-to-tank charging loop, a properly sized pump (sometimes also variable speed) ensures the boiler can transfer its output without short-cycling or overheating.
+        </p>
+        <p class="text-lg text-charcoal/80 leading-relaxed">
+          The result is less electricity used, better comfort, and a system that works more smoothly with the batch-burn nature of a gasification boiler.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
