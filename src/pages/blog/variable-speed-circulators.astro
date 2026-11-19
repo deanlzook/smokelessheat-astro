@@ -4,13 +4,13 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 ---
 
-<Layout title="Variable Speed Circulators | Smokeless Heat Blog" description="How variable speed circulators improve efficiency and comfort in wood boiler and thermal storage systems.">
+<Layout title="Variable Speed Circulators | Smokeless Heat Blog" description="Using the Nimbus control for ideal flow rates with circulators in wood boiler and thermal storage systems.">
   <Header />
 
   <main class="pt-24">
     <section class="py-16 bg-charcoal text-cream">
       <div class="max-w-3xl mx-auto px-6">
-        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Blog</p>
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Installation</p>
         <h1 class="font-serif text-4xl md:text-5xl">Variable Speed Circulators</h1>
       </div>
     </section>
@@ -18,37 +18,75 @@ import Footer from '../../components/Footer.astro';
     <article class="py-16 bg-cream">
       <div class="max-w-3xl mx-auto px-6">
         <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          A traditional circulator runs at one speed. When a zone calls for heat it turns on full blast, and when the call ends it stops. That works, but it is not the most efficient or quiet way to move heat—especially in a system with a wood gasification boiler and thermal storage tanks.
+          The purpose of using the nimbus control is so the ideal flow rate can be achievable for any circulator in your system. Flow rate is important. A boiler circulator running too slowly can overheat, whereas running too quickly can negatively affect stratification in thermal storage tanks by stirring the hot and cold water.
+        </p>
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          Using the manual dip switch settings on the nimbus, you can test different speeds in order to determine the best flow rate for transferring heat.
+        </p>
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          The default settings are with all switches in the off position as seen here.
         </p>
 
-        <img src="https://www.tacocomfort.com/wp-content/uploads/2019/05/00-Series-Speed-Voltage-Circulators.png" alt="Taco 00 Series Variable Speed Circulator" class="w-full max-w-2xl mx-auto my-8 border border-wood/20" />
-
-        <p class="text-lg text-charcoal/80 leading-relaxed mb-10">
-          Variable speed circulators (also called ECM circulators) adjust their speed based on the actual demand of the system. Instead of always pushing the same flow, they slow down when less heat is needed and speed up only when necessary.
-        </p>
-
-        <h2 class="font-serif text-3xl text-darkwood mb-6">Why they help with wood boilers and storage</h2>
-        <ul class="list-disc pl-6 text-charcoal/80 mb-10 space-y-3 text-lg">
-          <li>They maintain better temperature stratification in the accumulator tanks by avoiding excessive mixing.</li>
-          <li>They reduce electrical use. An ECM variable speed pump can use 50–80% less electricity than a standard fixed-speed circulator over a heating season.</li>
-          <li>They deliver more even heat. Flow matches the load, so rooms stay more comfortable without large temperature swings.</li>
-          <li>They are quieter. Lower speeds mean less noise in the pipes and at the pump.</li>
-        </ul>
-
-        <img src="https://www.tacocomfort.com/wp-content/uploads/2024/04/MechanicalHub_install-wall.jpeg" alt="Hydronic system with multiple circulators" class="w-full max-w-2xl mx-auto my-8 border border-wood/20" />
-
-        <h2 class="font-serif text-3xl text-darkwood mb-6">Common control methods</h2>
-        <ul class="list-disc pl-6 text-charcoal/80 mb-10 space-y-3 text-lg">
-          <li><strong>Delta-T control</strong> — The pump speeds up or slows down to hold a set temperature difference between supply and return (for example 20°F). This matches heat delivery to what the house is actually using.</li>
-          <li><strong>Proportional pressure</strong> — The pump follows a pressure curve that rises as flow increases, useful with zone valves.</li>
-          <li><strong>Constant pressure</strong> — The pump holds a fixed pressure differential and varies speed as zones open and close.</li>
-        </ul>
+        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/DefaultSettings.jpg" alt="Default dip switch settings" class="w-full max-w-md mx-auto my-8 border border-wood/20" />
 
         <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
-          In a Vedolux system with storage tanks, a well-chosen variable speed circulator on the house side helps keep the tanks stratified and delivers heat more efficiently. On the boiler-to-tank charging loop, a properly sized pump (sometimes also variable speed) ensures the boiler can transfer its output without short-cycling or overheating.
+          Using the dip switches, you can manually set the controller to a fixed speed. You are able to configure it in one percent increments between 27 and 100 percent output. Please note, we have found most circulators to be unable to work below 40 percent as set on the nimbus control.
         </p>
+
+        <div class="flex flex-wrap justify-center gap-6 my-8">
+          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/FixedSpeed27-250x183.jpg" alt="Fixed speed 27%" class="max-w-xs border border-wood/20" />
+          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/FixedSpeed50-250x182.jpg" alt="Fixed speed 50%" class="max-w-xs border border-wood/20" />
+        </div>
+
+        <img src="https://smokelessheat.com/wp-content/uploads/2015/03/FixedSpeedSettings.jpg" alt="Fixed speed settings chart" class="w-full max-w-sm mx-auto my-8 border border-wood/20" />
+
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-10">
+          Using the Nimbus controller in this manner will give you a single user defined speed for most any circulator. Our personal experience is with using the TACO circulators, 007, 0010, 0014 models.
+        </p>
+
+        <h2 class="font-serif text-3xl text-darkwood mb-6">Using Nimbus for True Variable Speed with NFCS</h2>
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          Another way to use the nimbus is with a nofossil control system – (now called VESTA), NFCS. The analog out (AO), on the left hand column are the four outputs being controlled with 4-20ma control signal.
+        </p>
+
+        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/LiveShot.jpg" alt="Live shot of Nimbus setup" class="w-full max-w-2xl mx-auto my-8 border border-wood/20" />
+
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          The benefit of using the Nimbus with the NFCS is to drive your circulator speeds dynamically based on current heating system temperatures and rule sets. This allows you to have even greater control over your heating system and also run your system at its optimum settings.
+        </p>
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          In this setup, the output of the Nimbus control is being controlled by the NFCS via a 4-20ma signal. The NFCS connects directly to each specific nimbus controller with a signal wire coming through a variable speed breakout box.
+        </p>
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          One of the first things you need to do when setting up your variable speed controller to work with NFCS is to configure the jumper so it will work with 4-20ma signal.
+        </p>
+
+        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/JumperSettings.jpg" alt="Jumper settings for 4-20ma" class="w-full max-w-md mx-auto my-8 border border-wood/20" />
+
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          Using the manual we can determine how to best set the Nimbus for our system. This is an example of a configuration, set to run on current control. This example is also to run at 60 percent if no signal is present. Where the manual refers to a “fan”, this applies to the circulator in our scenario.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 my-8">
+          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/table3.jpg" alt="Table 3" class="max-w-xs border border-wood/20" />
+          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/table2.jpg" alt="Table 2" class="max-w-xs border border-wood/20" />
+          <img src="https://smokelessheat.com/wp-content/uploads/2010/01/dipswitch.jpg" alt="Dip switch" class="max-w-xs border border-wood/20" />
+        </div>
+
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          A. Fan On / Fan Off Feature (switch #1): To turn fan(s) off below the set idle speed (see table 3). Set switch #1 to the ON position. To keep fans running at idle speed below the set idle speed, set switch #1 to the OFF position.
+        </p>
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          C. Control Signal Loss Options (switch #6): If the control signal is lost, (less than 4mA in I mode, less than 2VDC in V mode) when switch 6 is OFF fans will continue to idle or remain off. To send fans to full speed if the control signal is lost, set switch 6 to the ON position.
+        </p>
+        <p class="text-lg text-charcoal/80 leading-relaxed mb-6">
+          In the event that the NFCS is offline and not supplying 4-20ma signals, the nimbus can be configured so that it can either run in one of four preselected idle speeds or simply run wide open assuming that the aquastat or other control switch is supplying line voltage to the nimbus.
+        </p>
+
+        <img src="https://smokelessheat.com/wp-content/uploads/2010/01/FallBackNimbus.jpg" alt="Fallback Nimbus settings" class="w-full max-w-2xl mx-auto my-8 border border-wood/20" />
+
         <p class="text-lg text-charcoal/80 leading-relaxed">
-          The result is less electricity used, better comfort, and a system that works more smoothly with the batch-burn nature of a gasification boiler.
+          Connecting a variable speed control unit to the NFCS
         </p>
       </div>
     </article>
