@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-// Searchable content: products, pages, and blog posts
+// Searchable content: products, pages, blog posts, links, and how-it-works topics
 const items = [
   // Products
   { title: "Vedolux Lambda 350", href: "/products/wood-boilers/vedolux-lambda-350", type: "Product", text: "vedolux lambda 350 wood boiler" },
@@ -33,14 +33,24 @@ const items = [
   { title: "Steel Tank ASME 240", href: "/products/thermal-storage/steel-tank-asme-240", type: "Product", text: "steel tank asme 240" },
   { title: "Steel Tank ASME 400", href: "/products/thermal-storage/steel-tank-asme-400", type: "Product", text: "steel tank asme 400" },
   // Pages
-  { title: "How It Works", href: "/how-it-works", type: "Page", text: "how it works wood gasification thermal storage" },
+  { title: "How It Works", href: "/how-it-works", type: "Page", text: "how it works wood gasification thermal storage curved tube exchanger induced draft fan airflow pathways lower mass wear parts accumulator tanks" },
   { title: "Contact", href: "/contact", type: "Page", text: "contact hours map" },
   { title: "Blog", href: "/blog", type: "Page", text: "blog posts articles" },
-  { title: "Links", href: "/links", type: "Page", text: "links resources" },
+  { title: "Links", href: "/links", type: "Page", text: "links resources nyserda biomass design assistance hearth.com heat loss calculator" },
   { title: "Wood Boilers", href: "/products/wood-boilers", type: "Category", text: "wood boilers vedolux" },
   { title: "Thermal Storage", href: "/products/thermal-storage", type: "Category", text: "thermal storage tanks aqualux" },
   { title: "Heating Accessories", href: "/products/heating-accessories", type: "Category", text: "heating accessories immersion heaters" },
   { title: "Pellet Boilers", href: "/products/pellet-boilers", type: "Category", text: "pellet boilers pellmax viking" },
+  // Links page items
+  { title: "NYSERDA Biomass Design Assistance Manual", href: "/links", type: "Link", text: "nyserda biomass design assistance manual great resource pdf" },
+  { title: "Hearth.com Boiler Room Forum", href: "/links", type: "Link", text: "hearth.com boiler room wood boilers furnaces forum" },
+  { title: "Heat Loss Calculator", href: "/links", type: "Link", text: "heat loss calculator online tool" },
+  // How It Works topics
+  { title: "Unique Curved Tube Exchanger", href: "/how-it-works", type: "Topic", text: "curved tube exchanger easy cleaning smoke bypass turbulators" },
+  { title: "Induced Draft Fan", href: "/how-it-works", type: "Topic", text: "induced draft fan negative pressure smoke" },
+  { title: "Built-in Airflow Pathways", href: "/how-it-works", type: "Topic", text: "airflow pathways perfect burns smoke free 5 minutes" },
+  { title: "Lower Mass Easily Replaced Wear Parts", href: "/how-it-works", type: "Topic", text: "lower mass wear parts consumable replaced ceramic" },
+  { title: "Boiler and Accumulator Tank System", href: "/how-it-works", type: "Topic", text: "accumulator tanks batteries storage heat vacation electric elements viking pellet backup" },
   // Blog posts
   { title: "EPA and Varmebaronen – Is it the end of the line?", href: "/blog/epa-end-of-line", type: "Blog", text: "epa end of the line varmebaronen certificates renewal" },
   { title: "Vedolux 450 Story", href: "/blog/vedolux-450-story", type: "Blog", text: "vedolux 450 story firewoodhoardersclub" },
