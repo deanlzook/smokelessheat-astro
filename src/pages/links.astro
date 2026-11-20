@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Links | Smokeless Heat" description="Useful external links related to wood gasification boilers, heating, and biomass resources.">
+  <Header />
+
+  <main class="pt-24">
+    <section class="py-16 bg-charcoal text-cream">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Resources</p>
+        <h1 class="font-serif text-4xl md:text-5xl">Links</h1>
+      </div>
+    </section>
+
+    <section class="py-16 bg-cream">
+      <div class="max-w-3xl mx-auto px-6 space-y-8 text-charcoal/90 leading-relaxed">
+        <h2 class="font-serif text-2xl text-darkwood">External Links</h2>
+
+        <ul class="space-y-4 list-disc list-inside">
+          <li>
+            Biomass Design Assistance Manual from NYSERDA 
+            <a href="https://smokelessheat.com/wp-content/uploads/2022/10/Design-Assistance-Biomass-Boiler-3.pdf" class="text-ember hover:underline" target="_blank" rel="noopener noreferrer">[great resource!]</a>
+          </li>
+          <li>
+            Wood gas, From Wikipedia, the free encyclopedia, 
+            <a href="http://en.wikipedia.org/wiki/Woodgas" class="text-ember hover:underline" target="_blank" rel="noopener noreferrer">http://en.wikipedia.org</a>
+          </li>
+          <li>
+            Hearth.com, “The Boiler Room” forum, 
+            <a href="https://www.hearth.com/talk/forums/the-boiler-room-wood-boilers-and-furnaces.13/" class="text-ember hover:underline" target="_blank" rel="noopener noreferrer">http://www.hearth.com</a>
+          </li>
+          <li>
+            Online links 
+            <a href="http://www.builditsolar.com/References/Calculators/HeatLoss/HeatLoss.htm" class="text-ember hover:underline" target="_blank" rel="noopener noreferrer">Heat Loss Calculator</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
