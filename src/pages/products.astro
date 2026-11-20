@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Products | Smokeless Heat" description="Vedolux wood gasification boilers, thermal storage tanks, and heating accessories.">
+  <Header />
+
+  <main class="pt-24">
+    <section class="py-16 bg-charcoal text-cream">
+      <div class="max-w-4xl mx-auto px-6">
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Our Products</p>
+        <h1 class="font-serif text-4xl md:text-5xl">Products</h1>
+        <p class="mt-4 text-cream/70 max-w-2xl">High-efficiency Vedolux wood gasification boilers, thermal storage systems, and supporting heating accessories.</p>
+      </div>
+    </section>
+
+    <section class="py-20 bg-cream">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+        <!-- Boilers -->
+        <a href="/products/boilers" class="group block bg-white border border-wood/10 p-8 hover:border-ember transition">
+          <h2 class="font-serif text-2xl text-darkwood group-hover:text-ember transition">Boilers</h2>
+          <p class="mt-3 text-charcoal/70">Vedolux natural draft and lambda-controlled wood gasification boilers.</p>
+          <span class="inline-block mt-6 text-sm uppercase tracking-widest text-ember">View Boilers →</span>
+        </a>
+
+        <!-- Thermal Storage -->
+        <a href="/products/thermal-storage" class="group block bg-white border border-wood/10 p-8 hover:border-ember transition">
+          <h2 class="font-serif text-2xl text-darkwood group-hover:text-ember transition">Thermal Storage</h2>
+          <p class="mt-3 text-charcoal/70">Insulated accumulator tanks for efficient batch burning and constant heat.</p>
+          <span class="inline-block mt-6 text-sm uppercase tracking-widest text-ember">View Storage →</span>
+        </a>
+
+        <!-- Heating Accessories -->
+        <a href="/products/heating-accessories" class="group block bg-white border border-wood/10 p-8 hover:border-ember transition">
+          <h2 class="font-serif text-2xl text-darkwood group-hover:text-ember transition">Heating Accessories</h2>
+          <p class="mt-3 text-charcoal/70">Controls, loading units, piping components, and other system accessories.</p>
+          <span class="inline-block mt-6 text-sm uppercase tracking-widest text-ember">View Accessories →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
