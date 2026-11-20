@@ -7,6 +7,35 @@ const nav = [
   { href: "/links", label: "Links" },
   { href: "/contact", label: "Contact" },
 ];
+
+// Shared searchable items for live dropdown
+const searchItems = [
+  { title: "Vedolux Lambda 350", href: "/products/wood-boilers/vedolux-lambda-350", type: "Product", text: "vedolux lambda 350" },
+  { title: "Vedolux Lambda 450", href: "/products/wood-boilers/vedolux-lambda-450", type: "Product", text: "vedolux lambda 450" },
+  { title: "Vedolux Lambda 650", href: "/products/wood-boilers/vedolux-lambda-650", type: "Product", text: "vedolux lambda 650" },
+  { title: "Vedolux 55", href: "/products/wood-boilers/vedolux-55", type: "Product", text: "vedolux 55" },
+  { title: "Vedolux 37", href: "/products/wood-boilers/vedolux-37", type: "Product", text: "vedolux 37" },
+  { title: "Vedolux 30", href: "/products/wood-boilers/vedolux-30", type: "Product", text: "vedolux 30" },
+  { title: "Vedolux 40 UB", href: "/products/wood-boilers/vedolux-40-ub", type: "Product", text: "vedolux 40" },
+  { title: "Vedolux 50 UB", href: "/products/wood-boilers/vedolux-50-ub", type: "Product", text: "vedolux 50" },
+  { title: "9 kW Immersion Heater", href: "/products/heating-accessories/9kw-immersion-heater", type: "Product", text: "9kw immersion" },
+  { title: "How It Works", href: "/how-it-works", type: "Page", text: "how it works" },
+  { title: "Contact", href: "/contact", type: "Page", text: "contact" },
+  { title: "Blog", href: "/blog", type: "Page", text: "blog" },
+  { title: "Wood Boilers", href: "/products/wood-boilers", type: "Category", text: "wood boilers" },
+  { title: "Thermal Storage", href: "/products/thermal-storage", type: "Category", text: "thermal storage" },
+  { title: "Heating Accessories", href: "/products/heating-accessories", type: "Category", text: "accessories" },
+  { title: "EPA and Varmebaronen – Is it the end of the line?", href: "/blog/epa-end-of-line", type: "Blog", text: "epa end of line" },
+  { title: "EPA Database", href: "/blog/epa-database", type: "Blog", text: "epa database" },
+  { title: "Burn Wise", href: "/blog/burn-wise", type: "Blog", text: "burn wise hangtags epa" },
+  { title: "EPA Approval Letters", href: "/blog/epa-approval-letters", type: "Blog", text: "epa approval letters" },
+  { title: "Final Stages of EPA Method 28 Testing", href: "/blog/final-stages", type: "Blog", text: "final stages epa testing" },
+  { title: "EPA NSPS and Vedolux Wood Boilers", href: "/blog/epa-nsps", type: "Blog", text: "epa nsps vedolux" },
+  { title: "Lighting a Vedolux 37", href: "/blog/lighting-a-vedolux37", type: "Blog", text: "lighting vedolux 37" },
+  { title: "Washington State Vedolux 350", href: "/blog/washington-state-install", type: "Blog", text: "washington install" },
+  { title: "Variable Speed Circulators", href: "/blog/variable-speed-circulators", type: "Blog", text: "variable speed circulators" },
+  { title: "What is Wood Gasification", href: "/blog/what-is-wood-gasification", type: "Blog", text: "wood gasification" },
+];
 ---
 
 <header class="fixed top-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-wood/10">
@@ -17,8 +46,60 @@ const nav = [
         <a href={item.href} class="text-sm font-medium tracking-wide uppercase text-charcoal/80 hover:text-ember transition">{item.label}</a>
       ))}
     </nav>
-    <form action="/search" method="get" class="hidden md:flex">
-      <input name="q" type="text" placeholder="Search..." class="border border-wood/20 px-3 py-1.5 text-sm w-40 focus:outline-none focus:border-ember" />
-    </form>
+    <div class="relative hidden md:block" id="search-container">
+      <input 
+        id="header-search" 
+        type="text" 
+        placeholder="Search..." 
+        autocomplete="off"
+        class="border border-wood/20 px-3 py-1.5 text-sm w-48 focus:outline-none focus:border-ember" 
+      />
+      <div id="search-dropdown" class="absolute top-full right-0 mt-1 w-72 bg-white border border-wood/20 shadow-lg hidden z-50 max-h-96 overflow-y-auto"></div>
+    </div>
   </div>
 </header>
+
+<script define:vars={{ searchItems }}>
+  const input = document.getElementById('header-search');
+  const dropdown = document.getElementById('search-dropdown');
+  const data = searchItems;
+
+  function showResults(q) {
+    const query = q.toLowerCase().trim();
+    if (!query) {
+      dropdown.classList.add('hidden');
+      dropdown.innerHTML = '';
+      return;
+    }
+    const matches = data.filter(i => 
+      i.title.toLowerCase().includes(query) || 
+      (i.text && i.text.toLowerCase().includes(query))
+    ).slice(0, 8);
+
+    if (matches.length === 0) {
+      dropdown.innerHTML = '<div class="px-4 py-3 text-sm text-charcoal/60">No results</div>';
+    } else {
+      dropdown.innerHTML = matches.map(i => `
+        <a href="${i.href}" class="block px-4 py-2.5 hover:bg-cream border-b border-wood/10 last:border-0">
+          <span class="text-xs text-ember">${i.type}</span>
+          <div class="font-medium text-darkwood text-sm leading-tight">${i.title}</div>
+        </a>
+      `).join('');
+    }
+    dropdown.classList.remove('hidden');
+  }
+
+  input.addEventListener('input', (e) => showResults(e.target.value));
+  input.addEventListener('focus', () => { if (input.value) showResults(input.value); });
+  document.addEventListener('click', (e) => {
+    if (!document.getElementById('search-container').contains(e.target)) {
+      dropdown.classList.add('hidden');
+    }
+  });
+  // Allow Enter to go to full search page
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      window.location.href = '/search?q=' + encodeURIComponent(input.value);
+    }
+  });
+</script>
