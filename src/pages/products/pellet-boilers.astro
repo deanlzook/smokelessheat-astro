@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Pellet Boilers | Smokeless Heat">
+  <Header />
+  <main class="pt-24">
+    <section class="py-16 bg-charcoal text-cream">
+      <div class="max-w-4xl mx-auto px-6">
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Products</p>
+        <h1 class="font-serif text-4xl md:text-5xl">Pellet Boilers</h1>
+      </div>
+    </section>
+    <section class="py-16 bg-cream">
+      <div class="max-w-4xl mx-auto px-6 space-y-4">
+        <a href="/products/pellet-boilers/pellmax-ub" class="flex bg-white border border-wood/10 hover:border-ember transition overflow-hidden">
+          <img src="/images/products/Pellmax-UB.jpg" alt="Pellmax UB" class="w-32 h-32 object-contain flex-shrink-0" />
+          <div class="p-6">
+            <p class="text-xs text-ember">Pellmax</p>
+            <h2 class="font-serif text-xl text-darkwood">Pellmax UB</h2>
+            <p class="mt-1 text-charcoal/70 text-sm">Pellet boiler with integrated burner. Legacy – not stocked.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
