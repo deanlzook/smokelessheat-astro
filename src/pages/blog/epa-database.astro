@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="EPA Database | Smokeless Heat Blog" description="EPA now has the list of approved boilers in a searchable database format.">
+  <Header />
+
+  <main class="pt-24">
+    <section class="py-16 bg-charcoal text-cream">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">News</p>
+        <h1 class="font-serif text-4xl md:text-5xl">EPA Database</h1>
+      </div>
+    </section>
+
+    <article class="py-16 bg-cream">
+      <div class="max-w-3xl mx-auto px-6 space-y-6 text-charcoal/90 leading-relaxed">
+        <p>
+          EPA now has the list of approved boilers in a searchable database format. One thing to note when comparing efficiency ratings is that most of the boilers in the list are using different test methods. To understand if the efficiency number can be directly compared, you would need to research what test method was used for a particular model you are comparing. All the Varmebaronen Vedolux wood boilers were tested with Method 28-PTS.
+        </p>
+
+        <p>
+          This is what it looks like if you search for Varmebaronen. Search to see what boilers are currently approved for 2020.
+        </p>
+
+        <p class="text-sm italic text-wood">
+          This was current as of June 2022.
+        </p>
+
+        <img src="/epa-database-varmebaronen.png" alt="EPA Certified Wood Stove Database search results for Varmebaronen" class="w-full border border-wood/20" />
+
+        <p class="text-sm text-wood mt-12 pt-6 border-t border-wood/20">
+          Originally published: June 2022
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
