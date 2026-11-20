@@ -1,0 +1,50 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+---
+<Layout title="AquaEcono CU 500 | Smokeless Heat">
+  <Header />
+  <main class="pt-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6 py-4 text-sm text-charcoal/60">
+      <a href="/" class="hover:text-ember">Home</a> / <a href="/products" class="hover:text-ember">Products</a> / <a href="/products/thermal-storage" class="hover:text-ember">Thermal Storage</a> / <span>AquaEcono CU 500</span>
+    </div>
+    <section class="max-w-6xl mx-auto px-6 py-8">
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <img src="/images/products/AquaEcono-CU-500.jpg" alt="AquaEcono CU 500" class="w-full max-w-sm border border-wood/10" />
+        <div>
+          <p class="text-sm text-ember mb-2">Thermal Storage</p>
+          <h1 class="font-serif text-3xl md:text-4xl text-darkwood">AquaEcono CU 500</h1>
+          <div class="mt-4 flex items-baseline gap-3">
+            <span class="text-lg text-charcoal/40 line-through">$2,135.00</span>
+            <span class="text-2xl font-medium text-darkwood">$1,708.00</span>
+          </div>
+          <p class="mt-2 text-charcoal/70">Insulated thermal accumulator tank with copper-lined hot water heater. 500 liters.</p>
+          <a href="tel:8553890083" class="inline-block mt-6 bg-ember text-cream px-6 py-3 text-sm uppercase tracking-wide font-medium hover:bg-wood transition">Call to Order: 855-389-0083</a>
+          <div class="mt-6 pt-6 border-t border-wood/10 text-sm text-charcoal/70"><span class="mr-6"><strong>SKU:</strong> 6261</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="max-w-4xl mx-auto px-6 py-12 border-t border-wood/10">
+      <h2 class="font-serif text-2xl text-darkwood mb-6">Description</h2>
+      <div class="space-y-4 text-charcoal/90 leading-relaxed">
+        <h3 class="font-serif text-xl text-darkwood">Insulated Thermal Accumulator Tank</h3>
+        <p><strong>AquaEcono accumulator tanks, the heart in your heating system!</strong></p>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Specially insulated: minimize heat loss!</li>
+          <li>Extremely compact: saves space!</li>
+          <li>Copper-lined hot water heater for domestic hot water</li>
+        </ul>
+      </div>
+    </section>
+    <section class="max-w-4xl mx-auto px-6 py-8 border-t border-wood/10">
+      <h2 class="font-serif text-2xl text-darkwood mb-4">Downloads</h2>
+      <div class="space-y-2">
+        <a href="/images/AqualuxBrochure.pdf" target="_blank" class="block text-ember hover:underline">Aqualux Brochure (PDF)</a>
+        <a href="/images/Aqualux_Manual.pdf" target="_blank" class="block text-ember hover:underline">Aqualux Manual (PDF)</a>
+      </div>
+    </section>
+    <section class="max-w-4xl mx-auto px-6 py-8 border-t border-wood/10"><p class="text-sm text-charcoal/60">Legacy product. Contact Smokeless Heat for availability.</p></section>
+  </main>
+  <Footer />
+</Layout>
