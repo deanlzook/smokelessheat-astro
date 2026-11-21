@@ -50,11 +50,15 @@ const searchItems = [
 <header class="fixed top-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-wood/10">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="/" class="font-serif text-xl md:text-2xl tracking-tight text-darkwood">Smokeless Heat</a>
+
+    <!-- Desktop nav -->
     <nav class="hidden md:flex gap-8">
       {nav.map(item => (
         <a href={item.href} class="text-sm font-medium tracking-wide uppercase text-charcoal/80 hover:text-ember transition">{item.label}</a>
       ))}
     </nav>
+
+    <!-- Desktop search -->
     <div class="relative hidden md:block" id="search-container">
       <input 
         id="header-search" 
@@ -65,19 +69,48 @@ const searchItems = [
       />
       <div id="search-dropdown" class="absolute top-full right-0 mt-1 w-72 bg-white border border-wood/20 shadow-lg hidden z-50 max-h-96 overflow-y-auto"></div>
     </div>
+
+    <!-- Mobile hamburger -->
+    <button id="mobile-menu-btn" class="md:hidden p-2 text-darkwood" aria-label="Menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="md:hidden hidden bg-cream border-t border-wood/10">
+    <nav class="px-6 py-4 space-y-3">
+      {nav.map(item => (
+        <a href={item.href} class="block text-base font-medium tracking-wide uppercase text-charcoal/90 hover:text-ember py-2">{item.label}</a>
+      ))}
+    </nav>
+    <div class="px-6 pb-4">
+      <input 
+        id="mobile-search" 
+        type="text" 
+        placeholder="Search..." 
+        autocomplete="off"
+        class="w-full border border-wood/20 px-3 py-2 text-sm focus:outline-none focus:border-ember" 
+      />
+      <div id="mobile-search-dropdown" class="mt-1 bg-white border border-wood/20 shadow-lg hidden max-h-64 overflow-y-auto"></div>
+    </div>
   </div>
 </header>
 
 <script define:vars={{ searchItems }}>
-  const input = document.getElementById('header-search');
-  const dropdown = document.getElementById('search-dropdown');
   const data = searchItems;
 
-  function showResults(q) {
+  // Desktop search
+  const desktopInput = document.getElementById('header-search');
+  const desktopDropdown = document.getElementById('search-dropdown');
+
+  function showDesktopResults(q) {
+    if (!desktopInput || !desktopDropdown) return;
     const query = q.toLowerCase().trim();
     if (!query) {
-      dropdown.classList.add('hidden');
-      dropdown.innerHTML = '';
+      desktopDropdown.classList.add('hidden');
+      desktopDropdown.innerHTML = '';
       return;
     }
     const matches = data.filter(i => 
@@ -86,29 +119,80 @@ const searchItems = [
     ).slice(0, 8);
 
     if (matches.length === 0) {
-      dropdown.innerHTML = '<div class="px-4 py-3 text-sm text-charcoal/60">No results</div>';
+      desktopDropdown.innerHTML = '<div class="px-4 py-3 text-sm text-charcoal/60">No results</div>';
     } else {
-      dropdown.innerHTML = matches.map(i => `
+      desktopDropdown.innerHTML = matches.map(i => `
         <a href="${i.href}" class="block px-4 py-2.5 hover:bg-cream border-b border-wood/10 last:border-0">
           <span class="text-xs text-ember">${i.type}</span>
           <div class="font-medium text-darkwood text-sm leading-tight">${i.title}</div>
         </a>
       `).join('');
     }
-    dropdown.classList.remove('hidden');
+    desktopDropdown.classList.remove('hidden');
   }
 
-  input.addEventListener('input', (e) => showResults(e.target.value));
-  input.addEventListener('focus', () => { if (input.value) showResults(input.value); });
-  document.addEventListener('click', (e) => {
-    if (!document.getElementById('search-container').contains(e.target)) {
-      dropdown.classList.add('hidden');
+  if (desktopInput && desktopDropdown) {
+    desktopInput.addEventListener('input', (e) => showDesktopResults(e.target.value));
+    desktopInput.addEventListener('focus', () => { if (desktopInput.value) showDesktopResults(desktopInput.value); });
+    desktopInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        window.location.href = '/search?q=' + encodeURIComponent(desktopInput.value);
+      }
+    });
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('search-container');
+      if (container && !container.contains(e.target)) {
+        desktopDropdown.classList.add('hidden');
+      }
+    });
+  }
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // Mobile search
+  const mobileInput = document.getElementById('mobile-search');
+  const mobileDropdown = document.getElementById('mobile-search-dropdown');
+
+  function showMobileResults(q) {
+    if (!mobileInput || !mobileDropdown) return;
+    const query = q.toLowerCase().trim();
+    if (!query) {
+      mobileDropdown.classList.add('hidden');
+      mobileDropdown.innerHTML = '';
+      return;
     }
-  });
-  // Allow Enter to go to full search page
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      window.location.href = '/search?q=' + encodeURIComponent(input.value);
+    const matches = data.filter(i => 
+      i.title.toLowerCase().includes(query) || 
+      (i.text && i.text.toLowerCase().includes(query))
+    ).slice(0, 8);
+
+    if (matches.length === 0) {
+      mobileDropdown.innerHTML = '<div class="px-4 py-3 text-sm text-charcoal/60">No results</div>';
+    } else {
+      mobileDropdown.innerHTML = matches.map(i => `
+        <a href="${i.href}" class="block px-4 py-2.5 hover:bg-cream border-b border-wood/10 last:border-0">
+          <span class="text-xs text-ember">${i.type}</span>
+          <div class="font-medium text-darkwood text-sm leading-tight">${i.title}</div>
+        </a>
+      `).join('');
     }
-  });
+    mobileDropdown.classList.remove('hidden');
+  }
+
+  if (mobileInput && mobileDropdown) {
+    mobileInput.addEventListener('input', (e) => showMobileResults(e.target.value));
+    mobileInput.addEventListener('focus', () => { if (mobileInput.value) showMobileResults(mobileInput.value); });
+    mobileInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        window.location.href = '/search?q=' + encodeURIComponent(mobileInput.value);
+      }
+    });
+  }
 </script>
