@@ -2,6 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { CATEGORIES } from '../lib/categories';
+import { getProducts } from '../lib/products';
+
+// Category cards; a category is listed once it has at least one product
+// in the `products` collection.
+const products = await getProducts();
+const categories = CATEGORIES.filter((c) => products.some((p) => p.data.category === c.slug));
 ---
 
 <Layout title="Products | Smokeless Heat" description="Vedolux wood gasification boilers, thermal storage tanks, and heating accessories.">
@@ -18,33 +25,13 @@ import Footer from '../components/Footer.astro';
 
     <section class="py-20 bg-cream">
       <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-        <!-- Wood Boilers -->
-        <a href="/products/wood-boilers" class="group block bg-white border border-wood/10 p-8 hover:border-ember transition">
-          <h2 class="font-serif text-2xl text-darkwood group-hover:text-ember transition">Wood Boilers</h2>
-          <p class="mt-3 text-charcoal/70">Vedolux natural draft and lambda-controlled wood gasification boilers.</p>
-          <span class="inline-block mt-6 text-sm uppercase tracking-widest text-ember">View Wood Boilers →</span>
-        </a>
-
-        <!-- Thermal Storage -->
-        <a href="/products/thermal-storage" class="group block bg-white border border-wood/10 p-8 hover:border-ember transition">
-          <h2 class="font-serif text-2xl text-darkwood group-hover:text-ember transition">Thermal Storage</h2>
-          <p class="mt-3 text-charcoal/70">Insulated accumulator tanks for efficient batch burning and constant heat.</p>
-          <span class="inline-block mt-6 text-sm uppercase tracking-widest text-ember">View Storage →</span>
-        </a>
-
-        <!-- Pellet Boilers -->
-        <a href="/products/pellet-boilers" class="group block bg-white border border-wood/10 p-8 hover:border-ember transition">
-          <h2 class="font-serif text-2xl text-darkwood group-hover:text-ember transition">Pellet Boilers</h2>
-          <p class="mt-3 text-charcoal/70">Pellmax pellet boilers for efficient automated heating.</p>
-          <span class="inline-block mt-6 text-sm uppercase tracking-widest text-ember">View Pellet Boilers →</span>
-        </a>
-
-        <!-- Heating Accessories -->
-        <a href="/products/heating-accessories" class="group block bg-white border border-wood/10 p-8 hover:border-ember transition">
-          <h2 class="font-serif text-2xl text-darkwood group-hover:text-ember transition">Heating Accessories</h2>
-          <p class="mt-3 text-charcoal/70">Controls, loading units, piping components, and other system accessories.</p>
-          <span class="inline-block mt-6 text-sm uppercase tracking-widest text-ember">View Accessories →</span>
-        </a>
+        {categories.map((category) => (
+          <a href={`/products/${category.slug}`} class="group block bg-white border border-wood/10 p-8 hover:border-ember transition">
+            <h2 class="font-serif text-2xl text-darkwood group-hover:text-ember transition">{category.title}</h2>
+            <p class="mt-3 text-charcoal/70">{category.description}</p>
+            <span class="inline-block mt-6 text-sm uppercase tracking-widest text-ember">{category.cta} →</span>
+          </a>
+        ))}
       </div>
     </section>
   </main>
