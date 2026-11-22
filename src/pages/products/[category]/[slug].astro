@@ -1,0 +1,26 @@
+---
+// Product detail pages: /products/<category>/<slug>, rendered from the
+// `products` collection (src/data/products/*.md).
+import { getCollection, render } from 'astro:content';
+import ProductLayout from '../../../layouts/ProductLayout.astro';
+import { productSlug, type Product } from '../../../lib/products';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  return products.map((product) => ({
+    params: { category: product.data.category, slug: productSlug(product) },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const { Content } = await render(product);
+---
+
+<ProductLayout product={product}>
+  <Content />
+</ProductLayout>

@@ -1,0 +1,41 @@
+---
+// Category listing pages: /products/wood-boilers, /products/thermal-storage, ...
+// Products come from the `products` collection, filtered by `category`
+// and sorted by `order`, so a new Markdown file shows up here automatically.
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProductCard from '../../components/products/ProductCard.astro';
+import { CATEGORIES, type Category } from '../../lib/categories';
+import { getProducts } from '../../lib/products';
+
+export function getStaticPaths() {
+  return CATEGORIES.map((category) => ({ params: { category: category.slug }, props: { category } }));
+}
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+const products = await getProducts(category.slug);
+---
+
+<Layout title={`${category.title} | Smokeless Heat`}>
+  <Header />
+  <main class="pt-24">
+    <section class="py-16 bg-charcoal text-cream">
+      <div class="max-w-4xl mx-auto px-6">
+        <p class="text-ember text-sm uppercase tracking-[0.3em] mb-4">Products</p>
+        <h1 class="font-serif text-4xl md:text-5xl">{category.title}</h1>
+      </div>
+    </section>
+    <section class="py-16 bg-cream">
+      <div class="max-w-4xl mx-auto px-6 space-y-4">
+        {products.map((product) => <ProductCard product={product} category={category} />)}
+        {products.length === 0 && <p class="text-charcoal/70">No products in this category yet. Please contact us for availability.</p>}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

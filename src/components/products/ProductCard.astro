@@ -1,0 +1,37 @@
+---
+// One product row on a category listing page.
+import type { Category } from '../../lib/categories';
+import { formatPrice, productUrl, type Product } from '../../lib/products';
+
+interface Props {
+  product: Product;
+  category: Category;
+}
+
+const { product, category } = Astro.props;
+const d = product.data;
+const l = d.listing;
+const image = l.image ?? d.images[0].src;
+const alt = l.imageAlt ?? d.images[0].alt ?? d.title;
+const title = l.title ?? d.heading ?? d.title;
+const eyebrow = category.showCardEyebrow ? (l.eyebrow ?? d.series) : undefined;
+const price = formatPrice(d.price);
+const compareAt = formatPrice(d.compareAtPrice);
+const summary = l.summary ?? (l.showPrice ? undefined : d.shortDescription);
+const imgClass = category.cardImage === 'cover' ? 'w-32 h-32 object-cover flex-shrink-0' : 'w-32 h-32 object-contain flex-shrink-0';
+const textClass = eyebrow ? 'mt-1 text-charcoal/70 text-sm' : 'mt-2 text-charcoal/70 text-sm';
+---
+
+<a href={productUrl(product)} class="flex bg-white border border-wood/10 hover:border-ember transition overflow-hidden">
+  <img src={image} alt={alt} class={imgClass} />
+  <div class="p-6">
+    {eyebrow && <p class="text-xs text-ember">{eyebrow}</p>}
+    <h2 class="font-serif text-xl text-darkwood">{title}</h2>
+    {summary ? (
+      <p class={textClass}>{summary}</p>
+    ) : (
+      price && <p class={textClass}>{compareAt && <><span class="line-through">{compareAt}</span> </>}{price}</p>
+    )}
+    {l.badge && <span class="text-xs uppercase tracking-wide text-ember">{l.badge}</span>}
+  </div>
+</a>
