@@ -2,112 +2,96 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-
-// Searchable content: products, pages, blog posts, links, and how-it-works topics
-const items = [
-  // Products
-  { title: "Vedolux Lambda 350", href: "/products/wood-boilers/vedolux-lambda-350", type: "Product", text: "vedolux lambda 350 wood boiler" },
-  { title: "Vedolux Lambda 450", href: "/products/wood-boilers/vedolux-lambda-450", type: "Product", text: "vedolux lambda 450 wood boiler" },
-  { title: "Vedolux Lambda 650", href: "/products/wood-boilers/vedolux-lambda-650", type: "Product", text: "vedolux lambda 650 wood boiler" },
-  { title: "Vedolux 55", href: "/products/wood-boilers/vedolux-55", type: "Product", text: "vedolux 55 wood boiler" },
-  { title: "Vedolux 37", href: "/products/wood-boilers/vedolux-37", type: "Product", text: "vedolux 37 wood boiler" },
-  { title: "Vedolux 30", href: "/products/wood-boilers/vedolux-30", type: "Product", text: "vedolux 30 wood boiler" },
-  { title: "Vedolux 40 UB", href: "/products/wood-boilers/vedolux-40-ub", type: "Product", text: "vedolux 40 ub wood boiler" },
-  { title: "Vedolux 50 UB", href: "/products/wood-boilers/vedolux-50-ub", type: "Product", text: "vedolux 50 ub wood boiler" },
-  { title: "9 kW Immersion Heater", href: "/products/heating-accessories/9kw-immersion-heater", type: "Product", text: "9kw immersion heater electric backup" },
-  { title: "4.5 kW Immersion Heater", href: "/products/heating-accessories/4.5kw-immersion-heater", type: "Product", text: "4.5kw immersion heater electric backup" },
-  { title: "Laddomat 21-100", href: "/products/heating-accessories/laddomat-21-100", type: "Product", text: "laddomat 21-100 loading unit" },
-  { title: "LK 810 Loading Unit", href: "/products/heating-accessories/lk-810-loading-unit", type: "Product", text: "lk 810 loading unit" },
-  { title: "Pellmax UB", href: "/products/pellet-boilers/pellmax-ub", type: "Product", text: "pellmax ub pellet boiler" },
-  { title: "Viking Bio 20", href: "/products/pellet-boilers/viking-bio-20", type: "Product", text: "viking bio 20 pellet" },
-  { title: "Viking Bio 35", href: "/products/pellet-boilers/viking-bio-35", type: "Product", text: "viking bio 35 pellet" },
-  { title: "Viking Bio 200", href: "/products/pellet-boilers/viking-bio-200", type: "Product", text: "viking bio 200 pellet" },
-  { title: "Pellet Store 200", href: "/products/pellet-boilers/pellet-store-200", type: "Product", text: "pellet store 200" },
-  { title: "Aqualux CU 750", href: "/products/thermal-storage/aqualux-cu-750", type: "Product", text: "aqualux cu 750 thermal storage tank" },
-  { title: "Aqualux Teknik 1000", href: "/products/thermal-storage/aqualux-teknik-1000", type: "Product", text: "aqualux teknik 1000" },
-  { title: "Aqualux Teknik 750", href: "/products/thermal-storage/aqualux-teknik-750", type: "Product", text: "aqualux teknik 750" },
-  { title: "Aqualux UB 1000", href: "/products/thermal-storage/aqualux-ub-1000", type: "Product", text: "aqualux ub 1000" },
-  { title: "Aqualux UB 750", href: "/products/thermal-storage/aqualux-ub-750", type: "Product", text: "aqualux ub 750" },
-  { title: "Aquaecono CU 500", href: "/products/thermal-storage/aquaecono-cu-500", type: "Product", text: "aquaecono cu 500" },
-  { title: "Aquaecono UB 500", href: "/products/thermal-storage/aquaecono-ub-500", type: "Product", text: "aquaecono ub 500" },
-  { title: "Steel Tank ASME 240", href: "/products/thermal-storage/steel-tank-asme-240", type: "Product", text: "steel tank asme 240" },
-  { title: "Steel Tank ASME 400", href: "/products/thermal-storage/steel-tank-asme-400", type: "Product", text: "steel tank asme 400" },
-  // Pages
-  { title: "How It Works", href: "/how-it-works", type: "Page", text: "how it works wood gasification thermal storage curved tube exchanger induced draft fan airflow pathways lower mass wear parts accumulator tanks" },
-  { title: "Contact", href: "/contact", type: "Page", text: "contact hours map" },
-  { title: "Blog", href: "/blog", type: "Page", text: "blog posts articles" },
-  { title: "Links", href: "/links", type: "Page", text: "links resources nyserda biomass design assistance hearth.com heat loss calculator" },
-  { title: "Wood Boilers", href: "/products/wood-boilers", type: "Category", text: "wood boilers vedolux" },
-  { title: "Thermal Storage", href: "/products/thermal-storage", type: "Category", text: "thermal storage tanks aqualux" },
-  { title: "Heating Accessories", href: "/products/heating-accessories", type: "Category", text: "heating accessories immersion heaters" },
-  { title: "Pellet Boilers", href: "/products/pellet-boilers", type: "Category", text: "pellet boilers pellmax viking" },
-  // Links page items
-  { title: "NYSERDA Biomass Design Assistance Manual", href: "/links", type: "Link", text: "nyserda biomass design assistance manual great resource pdf" },
-  { title: "Hearth.com Boiler Room Forum", href: "/links", type: "Link", text: "hearth.com boiler room wood boilers furnaces forum" },
-  { title: "Heat Loss Calculator", href: "/links", type: "Link", text: "heat loss calculator online tool" },
-  // How It Works topics
-  { title: "Unique Curved Tube Exchanger", href: "/how-it-works", type: "Topic", text: "curved tube exchanger easy cleaning smoke bypass turbulators" },
-  { title: "Induced Draft Fan", href: "/how-it-works", type: "Topic", text: "induced draft fan negative pressure smoke" },
-  { title: "Built-in Airflow Pathways", href: "/how-it-works", type: "Topic", text: "airflow pathways perfect burns smoke free 5 minutes" },
-  { title: "Lower Mass Easily Replaced Wear Parts", href: "/how-it-works", type: "Topic", text: "lower mass wear parts consumable replaced ceramic" },
-  { title: "Boiler and Accumulator Tank System", href: "/how-it-works", type: "Topic", text: "accumulator tanks batteries storage heat vacation electric elements viking pellet backup" },
-  // Blog posts
-  { title: "EPA and Varmebaronen – Is it the end of the line?", href: "/blog/epa-end-of-line", type: "Blog", text: "epa end of the line varmebaronen certificates renewal" },
-  { title: "Vedolux 450 Story", href: "/blog/vedolux-450-story", type: "Blog", text: "vedolux 450 story firewoodhoardersclub" },
-  { title: "Bonded Seals for Threaded BSPP Adapters", href: "/blog/bonded-seal-adapters", type: "Blog", text: "bonded seals bspp adapters hemp paste loctite" },
-  { title: "Vedolux 650 Lambda Controlled Wood Boiler", href: "/blog/vedolux-650", type: "Blog", text: "vedolux 650 lambda controlled video" },
-  { title: "Washington State Vedolux Approved Boilers", href: "/blog/washington-state-approved", type: "Blog", text: "washington state approved vedolux 350 450" },
-  { title: "Washington State Vedolux 350 Wood Boiler", href: "/blog/washington-state-install", type: "Blog", text: "washington state install vedolux 350 customer story" },
-  { title: "NYSERTA Demo", href: "/blog/nyserta-demo", type: "Blog", text: "nyserta demo renewable heat training" },
-  { title: "EPA Database", href: "/blog/epa-database", type: "Blog", text: "epa database searchable approved boilers" },
-  { title: "Burn Wise", href: "/blog/burn-wise", type: "Blog", text: "burn wise hangtags epa step 2" },
-  { title: "AHR Expo", href: "/blog/ahr-expo", type: "Blog", text: "ahr expo 2015 varmebaronen" },
-  { title: "Maine Install", href: "/blog/maine-install", type: "Blog", text: "maine install vedolux 30 aqualux" },
-  { title: "EPA Approval Letters", href: "/blog/epa-approval-letters", type: "Blog", text: "epa approval letters vedolux 30 37 55 350 450" },
-  { title: "Final Stages of EPA Method 28 WHH-PTS Testing for Vedolux Boilers", href: "/blog/final-stages", type: "Blog", text: "final stages epa method 28 testing emissions vedolux" },
-  { title: "EPA NSPS and Vedolux Wood Boilers", href: "/blog/epa-nsps", type: "Blog", text: "epa nsps vedolux wood boilers regulations testing" },
-  { title: "Lighting a Vedolux 37", href: "/blog/lighting-a-vedolux37", type: "Blog", text: "lighting vedolux 37 startup method" },
-  { title: "Ag Progress Show 2013", href: "/blog/ag-progress-show-2013", type: "Blog", text: "ag progress show 2013 trailer" },
-  { title: "Install in Studio Barn", href: "/blog/install-in-studio-barn", type: "Blog", text: "install studio barn new hampshire radiant" },
-  { title: "Vedolux 50 with Storage Tanks", href: "/blog/vedolux-50-with-storage-tanks", type: "Blog", text: "vedolux 50 storage tanks" },
-  { title: "Variable Speed Circulators", href: "/blog/variable-speed-circulators", type: "Blog", text: "variable speed circulators efficiency" },
-  { title: "What is Wood Gasification", href: "/blog/what-is-wood-gasification", type: "Blog", text: "what is wood gasification clean burn" },
-];
 ---
-<Layout title="Search | Smokeless Heat">
+<Layout title="Search | Smokeless Heat" description="Search Smokeless Heat products, blog posts, and pages.">
   <Header />
   <main class="pt-28 pb-16">
     <section class="max-w-3xl mx-auto px-6 py-12">
-      <h1 class="font-serif text-3xl text-darkwood mb-6">Search</h1>
-      <input id="search-input" type="text" placeholder="Search products, blog posts, pages..." class="w-full border border-wood/20 px-4 py-3 text-lg focus:outline-none focus:border-ember" />
+      <h1 class="font-serif text-3xl text-darkwood mb-2">Search</h1>
+      <p class="text-charcoal/70 mb-6">Look up products, blog posts, and pages by keyword.</p>
+      <input
+        id="search-input"
+        type="text"
+        placeholder="Search products, blog posts, pages..."
+        autocomplete="off"
+        class="w-full border border-wood/20 px-4 py-3 text-lg focus:outline-none focus:border-ember bg-white"
+      />
       <div id="results" class="mt-6 space-y-2"></div>
     </section>
   </main>
   <Footer />
-  <script define:vars={{ items }}>
-    const input = document.getElementById('search-input');
+  <script>
+    import { search, highlight, escapeHtml, type SearchItem } from '../lib/search';
+
+    const input = document.getElementById('search-input') as HTMLInputElement | null;
     const results = document.getElementById('results');
-    const data = items;
-    function render(q) {
-      const query = q.toLowerCase().trim();
-      if (!query) { results.innerHTML = ''; return; }
-      const matches = data.filter(i => 
-        i.title.toLowerCase().includes(query) || 
-        (i.text && i.text.toLowerCase().includes(query))
-      );
-      if (matches.length === 0) {
+    let items: SearchItem[] | null = null;
+    let loadError = false;
+
+    async function loadIndex(): Promise<SearchItem[]> {
+      if (items) return items;
+      const res = await fetch('/search-index.json');
+      if (!res.ok) throw new Error('Failed to load search index');
+      items = await res.json();
+      return items;
+    }
+
+    function render(q: string) {
+      if (!input || !results) return;
+      const query = q.trim();
+      if (!query) {
+        results.innerHTML = '';
+        return;
+      }
+      if (loadError) {
+        results.innerHTML = '<p class="text-charcoal/60">Search is unavailable right now. Please try again.</p>';
+        return;
+      }
+      if (!items) {
+        results.innerHTML = '<p class="text-charcoal/60">Searching…</p>';
+        return;
+      }
+      const hits = search(items, query);
+      if (hits.length === 0) {
         results.innerHTML = '<p class="text-charcoal/60">No results found.</p>';
         return;
       }
-      results.innerHTML = matches.map(i => `
-        <a href="${i.href}" class="block p-4 bg-white border border-wood/10 hover:border-ember">
-          <span class="text-xs text-ember">${i.type}</span><br>
-          <span class="font-serif text-lg text-darkwood">${i.title}</span>
-        </a>
-      `).join('');
+      const words = query.toLowerCase().match(/[a-z0-9]+(?:\.[0-9]+)*/g) ?? [];
+      results.innerHTML = hits.map((hit) => {
+        const title = highlight(hit.item.title, words);
+        const snippet = hit.snippet ? highlight(hit.snippet, words) : '';
+        return `
+          <a href="${escapeHtml(hit.item.href)}" class="block p-4 bg-white border border-wood/10 hover:border-ember">
+            <span class="text-xs text-ember">${escapeHtml(hit.item.type)}</span><br>
+            <span class="font-serif text-lg text-darkwood">${title}</span>
+            ${snippet ? `<p class="mt-1 text-sm text-charcoal/80 leading-relaxed">${snippet}</p>` : ''}
+          </a>`;
+      }).join('');
     }
-    input.addEventListener('input', e => render(e.target.value));
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('q')) { input.value = params.get('q'); render(params.get('q')); }
+
+    async function onQuery(q: string, pushUrl: boolean) {
+      render(q);
+      if (pushUrl) {
+        const url = q.trim() ? `/search?q=${encodeURIComponent(q.trim())}` : '/search';
+        history.replaceState(null, '', url);
+      }
+      if (!items && !loadError) {
+        try {
+          await loadIndex();
+          render(q);
+        } catch {
+          loadError = true;
+          render(q);
+        }
+      }
+    }
+
+    if (input && results) {
+      input.addEventListener('input', (e) => onQuery((e.target as HTMLInputElement).value, true));
+      const params = new URLSearchParams(window.location.search);
+      const initial = params.get('q') || '';
+      if (initial) input.value = initial;
+      onQuery(initial, false);
+    }
   </script>
 </Layout>

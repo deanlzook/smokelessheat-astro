@@ -7,44 +7,6 @@ const nav = [
   { href: "/links", label: "Links" },
   { href: "/contact", label: "Contact" },
 ];
-
-// Shared searchable items for live dropdown
-const searchItems = [
-  { title: "Vedolux Lambda 350", href: "/products/wood-boilers/vedolux-lambda-350", type: "Product", text: "vedolux lambda 350" },
-  { title: "Vedolux Lambda 450", href: "/products/wood-boilers/vedolux-lambda-450", type: "Product", text: "vedolux lambda 450" },
-  { title: "Vedolux Lambda 650", href: "/products/wood-boilers/vedolux-lambda-650", type: "Product", text: "vedolux lambda 650" },
-  { title: "Vedolux 55", href: "/products/wood-boilers/vedolux-55", type: "Product", text: "vedolux 55" },
-  { title: "Vedolux 37", href: "/products/wood-boilers/vedolux-37", type: "Product", text: "vedolux 37" },
-  { title: "Vedolux 30", href: "/products/wood-boilers/vedolux-30", type: "Product", text: "vedolux 30" },
-  { title: "Vedolux 40 UB", href: "/products/wood-boilers/vedolux-40-ub", type: "Product", text: "vedolux 40" },
-  { title: "Vedolux 50 UB", href: "/products/wood-boilers/vedolux-50-ub", type: "Product", text: "vedolux 50" },
-  { title: "9 kW Immersion Heater", href: "/products/heating-accessories/9kw-immersion-heater", type: "Product", text: "9kw immersion" },
-  { title: "How It Works", href: "/how-it-works", type: "Page", text: "how it works curved tube induced draft airflow" },
-  { title: "Contact", href: "/contact", type: "Page", text: "contact" },
-  { title: "Blog", href: "/blog", type: "Page", text: "blog" },
-  { title: "Links", href: "/links", type: "Page", text: "links nyserda hearth heat loss" },
-  { title: "Wood Boilers", href: "/products/wood-boilers", type: "Category", text: "wood boilers" },
-  { title: "Thermal Storage", href: "/products/thermal-storage", type: "Category", text: "thermal storage" },
-  { title: "Heating Accessories", href: "/products/heating-accessories", type: "Category", text: "accessories" },
-  { title: "NYSERDA Biomass Design Assistance Manual", href: "/links", type: "Link", text: "nyserda biomass design assistance manual" },
-  { title: "Hearth.com Boiler Room Forum", href: "/links", type: "Link", text: "hearth.com boiler room forum" },
-  { title: "Heat Loss Calculator", href: "/links", type: "Link", text: "heat loss calculator" },
-  { title: "Unique Curved Tube Exchanger", href: "/how-it-works", type: "Topic", text: "curved tube exchanger cleaning" },
-  { title: "Induced Draft Fan", href: "/how-it-works", type: "Topic", text: "induced draft fan negative pressure" },
-  { title: "Built-in Airflow Pathways", href: "/how-it-works", type: "Topic", text: "airflow pathways smoke free" },
-  { title: "Lower Mass Easily Replaced Wear Parts", href: "/how-it-works", type: "Topic", text: "lower mass wear parts" },
-  { title: "Boiler and Accumulator Tank System", href: "/how-it-works", type: "Topic", text: "accumulator tanks storage" },
-  { title: "EPA and Varmebaronen – Is it the end of the line?", href: "/blog/epa-end-of-line", type: "Blog", text: "epa end of line" },
-  { title: "EPA Database", href: "/blog/epa-database", type: "Blog", text: "epa database" },
-  { title: "Burn Wise", href: "/blog/burn-wise", type: "Blog", text: "burn wise hangtags epa" },
-  { title: "EPA Approval Letters", href: "/blog/epa-approval-letters", type: "Blog", text: "epa approval letters" },
-  { title: "Final Stages of EPA Method 28 Testing", href: "/blog/final-stages", type: "Blog", text: "final stages epa testing" },
-  { title: "EPA NSPS and Vedolux Wood Boilers", href: "/blog/epa-nsps", type: "Blog", text: "epa nsps vedolux" },
-  { title: "Lighting a Vedolux 37", href: "/blog/lighting-a-vedolux37", type: "Blog", text: "lighting vedolux 37" },
-  { title: "Washington State Vedolux 350", href: "/blog/washington-state-install", type: "Blog", text: "washington install" },
-  { title: "Variable Speed Circulators", href: "/blog/variable-speed-circulators", type: "Blog", text: "variable speed circulators" },
-  { title: "What is Wood Gasification", href: "/blog/what-is-wood-gasification", type: "Blog", text: "wood gasification" },
-];
 ---
 
 <header class="fixed top-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-wood/10">
@@ -98,56 +60,95 @@ const searchItems = [
   </div>
 </header>
 
-<script define:vars={{ searchItems }}>
-  const data = searchItems;
+<script>
+  import { search, highlight, escapeHtml, type SearchItem } from '../lib/search';
 
-  // Desktop search
-  const desktopInput = document.getElementById('header-search');
-  const desktopDropdown = document.getElementById('search-dropdown');
+  let indexPromise: Promise<SearchItem[]> | null = null;
+  let indexError = false;
 
-  function showDesktopResults(q) {
-    if (!desktopInput || !desktopDropdown) return;
-    const query = q.toLowerCase().trim();
-    if (!query) {
-      desktopDropdown.classList.add('hidden');
-      desktopDropdown.innerHTML = '';
-      return;
+  function loadIndex(): Promise<SearchItem[]> {
+    if (!indexPromise) {
+      indexPromise = fetch('/search-index.json')
+        .then((res) => {
+          if (!res.ok) throw new Error('Failed to load search index');
+          return res.json();
+        })
+        .catch((err) => {
+          indexError = true;
+          indexPromise = null;
+          throw err;
+        });
     }
-    const matches = data.filter(i => 
-      i.title.toLowerCase().includes(query) || 
-      (i.text && i.text.toLowerCase().includes(query))
-    ).slice(0, 8);
-
-    if (matches.length === 0) {
-      desktopDropdown.innerHTML = '<div class="px-4 py-3 text-sm text-charcoal/60">No results</div>';
-    } else {
-      desktopDropdown.innerHTML = matches.map(i => `
-        <a href="${i.href}" class="block px-4 py-2.5 hover:bg-cream border-b border-wood/10 last:border-0">
-          <span class="text-xs text-ember">${i.type}</span>
-          <div class="font-medium text-darkwood text-sm leading-tight">${i.title}</div>
-        </a>
-      `).join('');
-    }
-    desktopDropdown.classList.remove('hidden');
+    return indexPromise;
   }
 
-  if (desktopInput && desktopDropdown) {
-    desktopInput.addEventListener('input', (e) => showDesktopResults(e.target.value));
-    desktopInput.addEventListener('focus', () => { if (desktopInput.value) showDesktopResults(desktopInput.value); });
-    desktopInput.addEventListener('keydown', (e) => {
+  // Warm the index as soon as the header script runs.
+  loadIndex().catch(() => {});
+
+  function dropdownHtml(query: string, items: SearchItem[]): string {
+    const hits = search(items, query);
+    const words = query.toLowerCase().match(/[a-z0-9]+(?:\.[0-9]+)*/g) ?? [];
+    const shown = hits.slice(0, 8);
+    if (indexError) {
+      return '<div class="px-4 py-3 text-sm text-charcoal/60">Search is unavailable</div>';
+    }
+    if (shown.length === 0) {
+      return '<div class="px-4 py-3 text-sm text-charcoal/60">No results</div>';
+    }
+    const list = shown.map((hit) => `
+      <a href="${escapeHtml(hit.item.href)}" class="block px-4 py-2.5 hover:bg-cream border-b border-wood/10 last:border-0">
+        <span class="text-xs text-ember">${escapeHtml(hit.item.type)}</span>
+        <div class="font-medium text-darkwood text-sm leading-tight">${highlight(hit.item.title, words)}</div>
+      </a>
+    `).join('');
+    const more = hits.length > 8
+      ? `<a href="/search?q=${encodeURIComponent(query)}" class="block px-4 py-2.5 text-sm text-ember hover:bg-cream">See all ${hits.length} results</a>`
+      : '';
+    return list + more;
+  }
+
+  function wireSearch(input: HTMLInputElement | null, dropdown: HTMLElement | null) {
+    if (!input || !dropdown) return;
+
+    async function show(q: string) {
+      const query = q.trim();
+      if (!query) {
+        dropdown.classList.add('hidden');
+        dropdown.innerHTML = '';
+        return;
+      }
+      if (!indexPromise && !indexError) loadIndex().catch(() => {});
+      try {
+        const items = await loadIndex();
+        if (input.value.trim() !== query) return; // stale
+        dropdown.innerHTML = dropdownHtml(query, items);
+        dropdown.classList.remove('hidden');
+      } catch {
+        dropdown.innerHTML = '<div class="px-4 py-3 text-sm text-charcoal/60">Search is unavailable</div>';
+        dropdown.classList.remove('hidden');
+      }
+    }
+
+    input.addEventListener('input', (e) => show((e.target as HTMLInputElement).value));
+    input.addEventListener('focus', () => { if (input.value) show(input.value); });
+    input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        window.location.href = '/search?q=' + encodeURIComponent(desktopInput.value);
-      }
-    });
-    document.addEventListener('click', (e) => {
-      const container = document.getElementById('search-container');
-      if (container && !container.contains(e.target)) {
-        desktopDropdown.classList.add('hidden');
+        window.location.href = '/search?q=' + encodeURIComponent(input.value.trim());
       }
     });
   }
 
-  // Mobile menu toggle
+  const desktopInput = document.getElementById('header-search') as HTMLInputElement | null;
+  const desktopDropdown = document.getElementById('search-dropdown');
+  wireSearch(desktopInput, desktopDropdown);
+
+  document.addEventListener('click', (e) => {
+    const container = document.getElementById('search-container');
+    if (container && desktopDropdown && !container.contains(e.target as Node)) {
+      desktopDropdown.classList.add('hidden');
+    }
+  });
+
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   if (menuBtn && mobileMenu) {
@@ -156,43 +157,7 @@ const searchItems = [
     });
   }
 
-  // Mobile search
-  const mobileInput = document.getElementById('mobile-search');
+  const mobileInput = document.getElementById('mobile-search') as HTMLInputElement | null;
   const mobileDropdown = document.getElementById('mobile-search-dropdown');
-
-  function showMobileResults(q) {
-    if (!mobileInput || !mobileDropdown) return;
-    const query = q.toLowerCase().trim();
-    if (!query) {
-      mobileDropdown.classList.add('hidden');
-      mobileDropdown.innerHTML = '';
-      return;
-    }
-    const matches = data.filter(i => 
-      i.title.toLowerCase().includes(query) || 
-      (i.text && i.text.toLowerCase().includes(query))
-    ).slice(0, 8);
-
-    if (matches.length === 0) {
-      mobileDropdown.innerHTML = '<div class="px-4 py-3 text-sm text-charcoal/60">No results</div>';
-    } else {
-      mobileDropdown.innerHTML = matches.map(i => `
-        <a href="${i.href}" class="block px-4 py-2.5 hover:bg-cream border-b border-wood/10 last:border-0">
-          <span class="text-xs text-ember">${i.type}</span>
-          <div class="font-medium text-darkwood text-sm leading-tight">${i.title}</div>
-        </a>
-      `).join('');
-    }
-    mobileDropdown.classList.remove('hidden');
-  }
-
-  if (mobileInput && mobileDropdown) {
-    mobileInput.addEventListener('input', (e) => showMobileResults(e.target.value));
-    mobileInput.addEventListener('focus', () => { if (mobileInput.value) showMobileResults(mobileInput.value); });
-    mobileInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        window.location.href = '/search?q=' + encodeURIComponent(mobileInput.value);
-      }
-    });
-  }
+  wireSearch(mobileInput, mobileDropdown);
 </script>
